@@ -1,0 +1,61 @@
+
+<html>
+<title>Slideshow</title>
+<style>
+.mySlides {
+  display:none;
+}
+.container{
+  width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+</style>
+<body>
+
+
+<div class="container">
+  <img class="mySlides" src="img/1.jpg" style="width:100%">
+  <img class="mySlides" src="img/2.jpg" style="width:100%">
+  <img class="mySlides" src="img/3.jpg" style="width:100%">
+  <img class="mySlides" src="img/4.jpg" style="width:100%">
+
+  <button onClick="plusDivs(-1)">Previuos</button>
+  <button onClick="plusDivs(1)">Next</button>
+</div>
+
+<script>
+  //First, set the slideIndex to 1. (First picture will be shown)
+var slideIndex = 1;
+//Then call showDivs() to display the first image.
+showDivs(slideIndex);
+
+//When the user clicks one of the buttons call plusDivs().
+//The plusDivs() function subtracts one or  adds one to the slideIndex.
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+/*The showDiv() function hides (display="none") all elements with the class name "mySlides", 
+and displays (display="block") the element with the given slideIndex.*/
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  //If the slideIndex is higher than the number of elements (x.length), the slideIndex is set to 0.
+  if (n > x.length) {
+    slideIndex = 1;
+  }   
+
+  //If the slideIndex is less than 1 it is set to number of elements (x.length). 
+  if (n < 1) {
+    slideIndex = x.length
+  }
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+</body>
+</html>
